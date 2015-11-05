@@ -73,6 +73,8 @@ public class ParqueaderoBESA
     
     static void InicializarAgentes () throws BESA.ExceptionBESA 
     {
+        ClassLogger.LogMsg("Probando commit parqueaderoBesa");
+        
         //Constantes
         int numeroVehiculos = 1;
         int numeroOcupantes = 4;
