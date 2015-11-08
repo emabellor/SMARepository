@@ -16,9 +16,9 @@ import Logging.*;
  *
  * @author Mauricio
  */
-public class AgenteMundo extends AgentBESA
+public class AgentePiso extends AgentBESA
 {
-    public AgenteMundo(String alias, StateBESA state, StructBESA structAgent, double passwd) throws KernellAgentExceptionBESA 
+    public AgentePiso(String alias, StateBESA state, StructBESA structAgent, double passwd) throws KernellAgentExceptionBESA 
     {
         super(alias, state, structAgent, passwd);
     }

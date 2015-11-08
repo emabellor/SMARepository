@@ -38,7 +38,7 @@ public class GuardaIngresarPeaton extends GuardBESA
     {
         DataIngresarPeaton data = (DataIngresarPeaton)ebesa.getData();
         AgentBESA agent = this.getAgent();
-        EstadoMundo estado = (EstadoMundo)agent.getState();
+        EstadoPiso estado = (EstadoPiso)agent.getState();
         String sender = data.sender;
         
         DataIngresarPeatonResult ingresarResult = new DataIngresarPeatonResult();

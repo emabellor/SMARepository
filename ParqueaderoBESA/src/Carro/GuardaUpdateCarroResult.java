@@ -5,6 +5,7 @@
  */
 package Carro;
 
+import Mundo.GuardaGetCarroStatus;
 import BESA.ExceptionBESA;
 import BESA.Kernell.Agent.AgentBESA;
 import BESA.Kernell.Agent.Event.DataBESA;
@@ -21,7 +22,6 @@ import Logging.ClassLogger;
 import Logging.LogLevel;
 import java.awt.Point;
 import java.util.Random;
-import Mundo.*;
 
 /**
  *

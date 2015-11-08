@@ -21,7 +21,7 @@ import Data.DataRetornoPeaton;
 import Data.DataUpdateCarroResult;
 import Logging.ClassLogger;
 import Logging.LogLevel;
-import Mundo.EstadoMundo;
+import Mundo.EstadoPiso;
 import Mundo.GuardaGetPeatonStatus;
 import Mundo.GuardaIngresarPeaton;
 import Mundo.GuardaRemoverPeaton;
@@ -77,8 +77,8 @@ public class GuardaRemoverPeatonResult extends GuardBESA
                 }
 
                 estado.volver = true;
-                estado.posX = EstadoMundo.puntoEntradaPeatones.x;
-                estado.posY = EstadoMundo.puntoEntradaPeatones.y;
+                estado.posX = EstadoPiso.puntoEntradaPeatones.x;
+                estado.posY = EstadoPiso.puntoEntradaPeatones.y;
                 
                 DataIngresarPeaton dataEvent = new DataIngresarPeaton();
                 dataEvent.sender = agente.getAlias();

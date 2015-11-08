@@ -3,8 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parqueaderobesa;
+package Parqueadero;
 
+import Mundo.EstadoPiso;
+import Mundo.AgentePiso;
+import Mundo.GuardaGetPeatonStatus;
+import Mundo.GuardaIngresarPeaton;
+import Mundo.GuardaGetCarroStatus;
+import Mundo.GuardaUpdateCarro;
+import Mundo.GuardaRemoverPeaton;
+import Mundo.GuardaIngresarCarro;
+import Mundo.GuardaUpdatePeaton;
+import Mundo.GuardaRemoverCarro;
+import Mundo.PisoA.EstadoPisoA;
+import Mundo.PisoB.EstadoPisoB;
+import Mundo.PisoC.EstadoPisoC;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.WindowAdapter;
@@ -20,7 +33,6 @@ import BESA.Util.PeriodicDataBESA;
 import Logging.*;
 import Model.*;
 import Carro.*;
-import Mundo.*;
 import Peaton.AgentePeaton;
 import Peaton.EstadoPeaton;
 import Peaton.GuardaGetPeatonStatusResult;
@@ -76,7 +88,8 @@ public class ParqueaderoBESA
         ClassLogger.LogMsg("Probando commit parqueaderoBesa");
         
         //Constantes
-        int numeroVehiculos = 1;
+        int numeroPisos = 5;
+        int numeroVehiculos = 3;
         int numeroOcupantes = 4;
         int periodoAparicionCarroMs = 2000;
         int periodoActualizacionPeatonMs = 400;
@@ -89,22 +102,78 @@ public class ParqueaderoBESA
         ClassLogger.LogMsg("Creando administrador BESA");
         AdmBESA admLocal = AdmBESA.getInstance();
                 
-        ClassLogger.LogMsg("Creando Agente Mundo");
-        EstadoMundo estadoMundo = new EstadoMundo(size);
-        estadoMundo.tiempoAparicionCarroMs = periodoAparicionCarroMs;
-        StructBESA structMundo = new StructBESA();
-        structMundo.addBehavior("BehaviorsMundo");
-        structMundo.bindGuard("BehaviorsMundo", GuardaUpdateCarro.class);
-        structMundo.bindGuard("BehaviorsMundo", GuardaUpdatePeaton.class);
-        structMundo.bindGuard("BehaviorsMundo", GuardaIngresarCarro.class);
-        structMundo.bindGuard("BehaviorsMundo", GuardaIngresarPeaton.class);
-        structMundo.bindGuard("BehaviorsMundo", GuardaGetCarroStatus.class);
-        structMundo.bindGuard("BehaviorsMundo", GuardaGetPeatonStatus.class);
-        structMundo.bindGuard("BehaviorsMundo", GuardaRemoverCarro.class);
-        structMundo.bindGuard("BehaviorsMundo", GuardaRemoverPeaton.class);
-        AgenteMundo agenteMundo = new AgenteMundo("WORLD", estadoMundo, structMundo, 0.91);
-        agenteMundo.start();
-        
+        if(numeroPisos > 1)
+        {
+            ClassLogger.LogMsg("Creando Agente PISO tipo-A");
+            EstadoPisoA estadoPisoA = new EstadoPisoA(size);
+            estadoPisoA.tiempoAparicionCarroMs = periodoAparicionCarroMs;
+            StructBESA structPisoA = new StructBESA();
+            structPisoA.addBehavior("BehaviorsPisoA");
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaUpdateCarro.class);
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaUpdatePeaton.class);
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaIngresarCarro.class);
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaIngresarPeaton.class);
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaGetCarroStatus.class);
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaGetPeatonStatus.class);
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaRemoverCarro.class);
+            structPisoA.bindGuard("BehaviorsPisoA", GuardaRemoverPeaton.class);
+            AgentePiso agentePisoA = new AgentePiso("WORLD", estadoPisoA, structPisoA, 0.91);
+            agentePisoA.start();
+            
+            if(numeroPisos > 2)
+            {
+                for(int p = 2; p < numeroPisos; p++)
+                {
+                    ClassLogger.LogMsg("Creando Agente PISO tipo-B");
+                    EstadoPisoB estadoPisoB = new EstadoPisoB(size);
+                    StructBESA structPisoB = new StructBESA();
+                    structPisoB.addBehavior("BehaviorsPisoA");
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaUpdateCarro.class);
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaUpdatePeaton.class);
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaIngresarCarro.class);
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaIngresarPeaton.class);
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaGetCarroStatus.class);
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaGetPeatonStatus.class);
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaRemoverCarro.class);
+                    structPisoB.bindGuard("BehaviorsPisoA", GuardaRemoverPeaton.class);
+                    AgentePiso agentePisoB = new AgentePiso("WORLD_"+p, estadoPisoB, structPisoB, 0.91);
+                    agentePisoB.start();
+                }
+            }
+            
+            ClassLogger.LogMsg("Creando Agente PISO tipo-C");
+            EstadoPisoC estadoPisoC = new EstadoPisoC(size);
+            StructBESA structPisoC = new StructBESA();
+            structPisoC.addBehavior("BehaviorsPisoA");
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaUpdateCarro.class);
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaUpdatePeaton.class);
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaIngresarCarro.class);
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaIngresarPeaton.class);
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaGetCarroStatus.class);
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaGetPeatonStatus.class);
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaRemoverCarro.class);
+            structPisoC.bindGuard("BehaviorsPisoA", GuardaRemoverPeaton.class);
+            AgentePiso agentePisoC = new AgentePiso("WORLD_"+numeroPisos, estadoPisoC, structPisoC, 0.91);
+            agentePisoC.start();
+        }
+        else
+        {
+            ClassLogger.LogMsg("Creando Agente PISO");
+            EstadoPiso estadoPiso = new EstadoPiso(size);
+            estadoPiso.tiempoAparicionCarroMs = periodoAparicionCarroMs;
+            StructBESA structPiso = new StructBESA();
+            structPiso.addBehavior("BehaviorsPiso");
+            structPiso.bindGuard("BehaviorsPiso", GuardaUpdateCarro.class);
+            structPiso.bindGuard("BehaviorsPiso", GuardaUpdatePeaton.class);
+            structPiso.bindGuard("BehaviorsPiso", GuardaIngresarCarro.class);
+            structPiso.bindGuard("BehaviorsPiso", GuardaIngresarPeaton.class);
+            structPiso.bindGuard("BehaviorsPiso", GuardaGetCarroStatus.class);
+            structPiso.bindGuard("BehaviorsPiso", GuardaGetPeatonStatus.class);
+            structPiso.bindGuard("BehaviorsPiso", GuardaRemoverCarro.class);
+            structPiso.bindGuard("BehaviorsPiso", GuardaRemoverPeaton.class);
+            AgentePiso agentePiso = new AgentePiso("WORLD", estadoPiso, structPiso, 0.91);
+            agentePiso.start();
+        }
         
         for (int i = 0; i < numeroVehiculos; i++)
         {

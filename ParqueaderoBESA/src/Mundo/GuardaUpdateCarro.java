@@ -41,7 +41,7 @@ public class GuardaUpdateCarro extends GuardBESA
         DataUpdateCarro data = (DataUpdateCarro)ebesa.getData();
         String sender = data.sender;
         AgentBESA agent = this.getAgent();
-        EstadoMundo estado = (EstadoMundo)agent.getState();
+        EstadoPiso estado = (EstadoPiso)agent.getState();
         
         Point posicion = new Point();
         posicion.x = data.nuevoX;

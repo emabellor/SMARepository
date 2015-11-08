@@ -21,7 +21,7 @@ import Data.DataWakeUpPeaton;
 import Data.TipoElemento;
 import Logging.ClassLogger;
 import Logging.LogLevel;
-import Mundo.EstadoMundo;
+import Mundo.EstadoPiso;
 import Mundo.GuardaGetCarroStatus;
 import Mundo.GuardaRemoverCarro;
 import Mundo.GuardaUpdateCarro;
@@ -133,7 +133,7 @@ public class GuardaGetCarroStatusResult extends GuardBESA
         }
         else
         {            
-            if (estado.x == EstadoMundo.puntoSalida.x && estado.y == EstadoMundo.puntoSalida.y)
+            if (estado.x == EstadoPiso.puntoSalida.x && estado.y == EstadoPiso.puntoSalida.y)
             {
                 EnviarEventoSalida(evArgs);
             }

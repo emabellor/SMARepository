@@ -18,7 +18,7 @@ import Data.DataGetPeatonStatusResult;
 import Data.DataUpdateCarroResult;
 import Data.DataUpdatePeaton;
 import Data.TipoElemento;
-import Mundo.EstadoMundo;
+import Mundo.EstadoPiso;
 import Mundo.GuardaUpdatePeaton;
 import java.awt.Point;
 
@@ -50,7 +50,7 @@ public class GuardaGetPeatonStatusResult extends GuardBESA
 
         Point puntoReferencia = new Point();
         if (estado.volver == false)
-            puntoReferencia = EstadoMundo.puntoSalidaPeatones;
+            puntoReferencia = EstadoPiso.puntoSalidaPeatones;
         else
             puntoReferencia = new Point(estado.posVehiculoX, estado.posVehiculoY);
         

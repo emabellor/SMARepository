@@ -42,7 +42,7 @@ public class GuardaGetCarroStatus extends GuardBESA
     {
         DataGetCarroStatus data = (DataGetCarroStatus)ebesa.getData();
         AgentBESA agent = this.getAgent();
-        EstadoMundo estado = (EstadoMundo)agent.getState();
+        EstadoPiso estado = (EstadoPiso)agent.getState();
         String sender = data.sender;
         
         DataGetCarroStatusResult statusResult = new DataGetCarroStatusResult();

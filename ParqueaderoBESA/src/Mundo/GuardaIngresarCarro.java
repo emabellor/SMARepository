@@ -39,10 +39,10 @@ public class GuardaIngresarCarro extends GuardBESA
     {
         DataIngresarCarro data = (DataIngresarCarro)ebesa.getData();
         AgentBESA agent = this.getAgent();
-        EstadoMundo estado = (EstadoMundo)agent.getState();
+        EstadoPiso estado = (EstadoPiso)agent.getState();
         String sender = data.sender;
         
-        Point posicionInicial = EstadoMundo.puntoEntrada;
+        Point posicionInicial = EstadoPiso.puntoEntrada;
         ClassElemento [][] estadoMundo = estado.ObtenerEstadoMapa(posicionInicial.x, posicionInicial.y);
         
         boolean isDesocupado = true;

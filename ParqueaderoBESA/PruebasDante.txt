@@ -1,0 +1,15 @@
+
+Noviembre 7 de 2015:
+
+Se asumio un estado general para un Agente-Piso (parqueadero con piso unico)
+
+Se establecio un estado particular para el Agente-PisoA (primer piso de parqueadero con varios pisos)
+                                    ... el Agente-PisoB (pisos intermedios de parqueadero con varios pisos)
+                                    ... el Agente-PisoC (ultimo piso de parqueadero con varios pisos)
+
+Se agrego una porcion de Calle para considerar la entrada de vehiculos desde el Piso(+)
+                                           ... la salida de vehiculos hacia el Piso(-) o Bajar
+                                           ... la entrada de vehiculos desde el Piso(-)
+                                           ... la salida de vehiculos hacia el Piso(+) o Subir
+
+Se abre una ventana particular para cada piso, pues no logre utilizar "Mapa" para diferentes Agentes-Piso

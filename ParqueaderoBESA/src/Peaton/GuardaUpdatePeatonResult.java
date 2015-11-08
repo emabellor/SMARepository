@@ -20,7 +20,7 @@ import Data.DataUpdateCarroResult;
 import Data.DataUpdatePeatonResult;
 import Logging.ClassLogger;
 import Logging.LogLevel;
-import Mundo.EstadoMundo;
+import Mundo.EstadoPiso;
 import Mundo.GuardaGetPeatonStatus;
 import Mundo.GuardaIngresarPeaton;
 import Mundo.GuardaRemoverPeaton;
@@ -55,7 +55,7 @@ public class GuardaUpdatePeatonResult extends GuardBESA
         boolean continuarMovimiento = true;
         Point puntoComparacion = new Point();
         if (estado.volver == false)
-            puntoComparacion = EstadoMundo.puntoSalidaPeatones;
+            puntoComparacion = EstadoPiso.puntoSalidaPeatones;
         else
             puntoComparacion = new Point(estado.posVehiculoX, estado.posVehiculoY);
         

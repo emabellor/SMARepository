@@ -37,7 +37,7 @@ public class GuardaRemoverCarro extends GuardBESA
     {
         DataRemoverCarro data = (DataRemoverCarro)ebesa.getData();
         AgentBESA agent = this.getAgent();
-        EstadoMundo estado = (EstadoMundo)agent.getState();
+        EstadoPiso estado = (EstadoPiso)agent.getState();
         String sender = data.sender;
         
         estado.RemoverAgente(sender);
