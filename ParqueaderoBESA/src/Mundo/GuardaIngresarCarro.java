@@ -6,20 +6,12 @@
 package Mundo;
 
 import BESA.ExceptionBESA;
-import BESA.Kernell.Agent.AgentBESA;
+import BESA.Kernell.Agent.*;
 import BESA.Kernell.Agent.Event.EventBESA;
-import BESA.Kernell.Agent.GuardBESA;
-import BESA.Kernell.Agent.StateBESA;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
 import BESA.Log.ReportBESA;
-import Carro.EstadoCarro;
-import Carro.GuardaIngresarCarroResult;
-import Data.ClassElemento;
-import Data.ClassObjetoCarro;
-import Data.DataIngresarCarro;
-import Data.DataIngresarCarroResult;
-import Data.DataUpdateCarro;
-import Data.TipoElemento;
+import Carro.*;
+import Data.*;
 import java.awt.Point;
 
 /**

@@ -5,6 +5,8 @@
  */
 package Logging;
 
+import javax.swing.JOptionPane;
+
 public class ClassLogger 
 {
     private ClassLogger()
@@ -22,5 +24,23 @@ public class ClassLogger
     public static void LogMsg (String message, LogLevel level)
     {
         System.out.println(level.name() + ": "+ message);
+    }
+    
+    public static void ThreadSleep (int timeoutMS)
+    {
+        try
+        {
+            Thread.sleep(timeoutMS);
+        }
+        catch (InterruptedException ex)
+        {
+            ClassLogger.LogMsg(ex.getMessage(), LogLevel.ERROR);
+        }
+        
+    }
+    
+    public static void ShowInfoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 }

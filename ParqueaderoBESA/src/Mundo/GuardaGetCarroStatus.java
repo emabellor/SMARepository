@@ -12,18 +12,8 @@ import BESA.Kernell.Agent.GuardBESA;
 import BESA.Kernell.Agent.StateBESA;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
 import BESA.Log.ReportBESA;
-import Carro.EstadoCarro;
-import Carro.GuardaGetCarroStatusResult;
-import Carro.GuardaIngresarCarroResult;
-import Carro.GuardaUpdateCarroResult;
-import Data.ClassElemento;
-import Data.ClassObjetoCarro;
-import Data.DataGetCarroStatus;
-import Data.DataGetCarroStatusResult;
-import Data.DataIngresarCarro;
-import Data.DataIngresarCarroResult;
-import Data.TipoElemento;
-import java.awt.Point;
+import Carro.*;
+import Data.*;
 
 /**
  *
@@ -60,5 +50,4 @@ public class GuardaGetCarroStatus extends GuardBESA
              ReportBESA.error(e);
         }
     }
-    
 }

@@ -6,26 +6,13 @@
 package Carro;
 
 import BESA.ExceptionBESA;
-import BESA.Kernell.Agent.AgentBESA;
 import BESA.Kernell.Agent.Event.EventBESA;
-import BESA.Kernell.Agent.GuardBESA;
-import BESA.Kernell.Agent.StateBESA;
+import BESA.Kernell.Agent.*;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
-import Data.ClassObjetoCalle;
-import Data.DataGetCarroStatus;
-import Data.DataGetCarroStatusResult;
-import Data.DataIngresarCarroResult;
-import Data.DataRemoverCarro;
-import Data.DataUpdateCarro;
-import Data.DataWakeUpPeaton;
-import Data.TipoElemento;
-import Logging.ClassLogger;
-import Logging.LogLevel;
-import Mundo.EstadoPiso;
-import Mundo.GuardaGetCarroStatus;
-import Mundo.GuardaRemoverCarro;
-import Mundo.GuardaUpdateCarro;
-import Peaton.GuardaWakeUpPeaton;
+import Data.*;
+import Logging.*;
+import Mundo.*;
+import Peaton.*;
 import java.util.Random;
 
 /**

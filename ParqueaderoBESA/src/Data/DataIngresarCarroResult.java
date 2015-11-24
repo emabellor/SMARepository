@@ -6,7 +6,7 @@
 package Data;
 
 import BESA.Kernell.Agent.Event.DataBESA;
-import Carro.EstadoCarro;
+import Carro.*;
 
 /**
  *

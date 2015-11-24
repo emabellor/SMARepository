@@ -3,35 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package GUI;
 
-import Carro.AgenteCarro;
-import Carro.EstadoCarro;
-import Data.ClassElemento;
-import Data.ClassObjetoCarro;
-import Data.TipoElemento;
+import Carro.*;
+import Data.*;
 import java.awt.*;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.MediaTracker;
 import java.awt.image.BufferedImage;
 import Logging.*;
-import com.oracle.jrockit.jfr.ContentType;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.util.List;
 import java.util.ArrayList;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  *
  * @author Mauricio
  */
-public class Map extends javax.swing.JPanel {
+public class MapPanel extends JPanel {
 
     private BufferedImage imageAuto;
     private BufferedImage imageAuto90;
@@ -51,11 +40,16 @@ public class Map extends javax.swing.JPanel {
     /**
      * Creates new form Map
      */
-    public Map(int _size) 
+    
+    public MapPanel(int _size) 
     {
-        size = _size;
+        initComponents();
+        
+        //En realidad, se presentan 4 casillas
+        size = _size * 4;
         keyList = new Object();
-        rectSize = 600/size;
+        rectSize = 0;
+        
         imageFondo = GetBufferedImage("Files\\background.png", this);
         imageAuto = GetBufferedImage("Files\\carred.png", this);
         imageAuto90 = GetBufferedImage("Files\\carred90.png", this);
@@ -77,7 +71,6 @@ public class Map extends javax.swing.JPanel {
         }
         
         listaAgentes = new ArrayList<>();
-        initComponents();
     }
     
 
@@ -277,6 +270,14 @@ public class Map extends javax.swing.JPanel {
     {
         synchronized(keyList)
         {
+            if (rectSize == 0)
+            {
+                int minSize = this.getSize().width;
+                if (this.getSize().height < minSize)
+                    minSize = this.getSize().height;
+                rectSize = minSize / size;
+            }
+            
             listaElementos = _listaElementos;
             listaAgentes = _listaAgentes;
         }

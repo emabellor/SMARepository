@@ -5,11 +5,8 @@
  */
 package Mundo;
 
-import BESA.Kernell.Agent.AgentBESA;
 import BESA.Kernell.Agent.KernellAgentExceptionBESA;
-import BESA.Kernell.Agent.StateBESA;
-import BESA.Kernell.Agent.StructBESA;
-import BESA.Log.ReportBESA;
+import BESA.Kernell.Agent.*;
 import Logging.*;
 
 /**

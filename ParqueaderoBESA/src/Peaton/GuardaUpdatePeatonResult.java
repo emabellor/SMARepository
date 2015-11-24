@@ -6,24 +6,13 @@
 package Peaton;
 
 import BESA.ExceptionBESA;
-import BESA.Kernell.Agent.AgentBESA;
 import BESA.Kernell.Agent.Event.EventBESA;
-import BESA.Kernell.Agent.GuardBESA;
-import BESA.Kernell.Agent.StateBESA;
+import BESA.Kernell.Agent.*;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
 import BESA.Log.ReportBESA;
-import Carro.EstadoCarro;
-import Data.DataGetPeatonStatus;
-import Data.DataIngresarPeaton;
-import Data.DataRemovePeaton;
-import Data.DataUpdateCarroResult;
-import Data.DataUpdatePeatonResult;
-import Logging.ClassLogger;
-import Logging.LogLevel;
-import Mundo.EstadoPiso;
-import Mundo.GuardaGetPeatonStatus;
-import Mundo.GuardaIngresarPeaton;
-import Mundo.GuardaRemoverPeaton;
+import Data.*;
+import Logging.*;
+import Mundo.*;
 import java.awt.Point;
 
 /**

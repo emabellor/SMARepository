@@ -304,7 +304,5 @@ public class EstadoPisoC extends EstadoPiso
                 }
             }
         }
-
-        mapa.RedibujarMapa(listaElementos, listaAgentes);
     }
 }

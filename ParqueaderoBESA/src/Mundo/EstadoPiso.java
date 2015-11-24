@@ -4,19 +4,11 @@
  * and open the template in the editor.
  */
 package Mundo;
-
-import Data.TipoElemento;
+import GUI.MapPanel;
 import BESA.Kernell.Agent.StateBESA;
-import Carro.EstadoCarro;
-import Data.ClassElemento;
-import Data.ClassObjetoBahia;
-import Data.ClassObjetoCalle;
-import Data.ClassObjetoCarro;
-import Data.DataGetCarroStatus;
-import Data.DataGetCarroStatusResult;
-import Logging.ClassLogger;
-import Logging.LogLevel;
-import Model.Map;
+import Carro.*;
+import Data.*;
+import Logging.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Point;
@@ -33,8 +25,7 @@ public class EstadoPiso extends StateBESA {
     public long ultimaAparicionCarro = System.currentTimeMillis();
     public int tiempoAparicionPeatonMs = 10000;
     public long ultimaAparicionPeaton = System.currentTimeMillis();
-    
-    protected Map mapa;
+
     protected ClassElemento [][] listaElementos;
     protected List<ClassElemento> listaAgentes;
     private final Object keyLock;
@@ -44,8 +35,6 @@ public class EstadoPiso extends StateBESA {
         //Escala del mundo - 15 * 15
         //El modelo del mapa esta escalado * 4   
         size = 15 * 4;
-        mapa = new Map(size);
-        mapa.AbrirVentana();
         keyLock = new Object();
        
         InicializarMapa();
@@ -333,8 +322,30 @@ public class EstadoPiso extends StateBESA {
                 }
             }
         }
-
-        mapa.RedibujarMapa(listaElementos, listaAgentes);
+    }
+    
+    public ClassElemento[][] GetElementos()
+    {
+        ClassElemento[][] nuevaListaElementos = new ClassElemento[size][size];
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                nuevaListaElementos[i][j] = listaElementos[i][j];
+            }
+        }
+        
+        return nuevaListaElementos;
+    }
+    
+    public List<ClassElemento> GetAgentes()
+    {
+        List<ClassElemento> nuevaListaAgentes = new ArrayList<>();
+        for(ClassElemento agente : listaAgentes)
+        {
+            nuevaListaAgentes.add(new ClassElemento(agente));
+        }
+        return nuevaListaAgentes;
     }
     
     private ClassElemento[][] ObtenerMapaCompleto(String alias)
@@ -446,7 +457,6 @@ public class EstadoPiso extends StateBESA {
             }
         }
         
-        mapa.RedibujarMapa(listaElementos, listaAgentes);
         return result;
     }
     
@@ -535,8 +545,8 @@ public class EstadoPiso extends StateBESA {
     public void AdicionarAgente(ClassElemento agente)
     {
         listaAgentes.add(agente);
-        mapa.RedibujarMapa(listaElementos, listaAgentes);
     }
+    
     
     public boolean ObtenerEstadoVehiculo(String label, DataGetCarroStatusResult carroStatus)
     {
@@ -550,8 +560,7 @@ public class EstadoPiso extends StateBESA {
         
         ClassElemento[][] mapaCompleto = ObtenerMapaCompleto (label);
         ClassElemento agente = ObtenerAgente(label);
-        
-        
+            
         if (agente.posX % 4 == 0 && agente.posY % 4 == 0)
         {
             //Cuadro de toma de decisiones
@@ -773,22 +782,13 @@ public class EstadoPiso extends StateBESA {
                 break;
             }
         }
-        
-        mapa.RedibujarMapa(listaElementos, listaAgentes);
+
         return result;
     }
     
     private boolean EsBahiaVertical(EstadoCarro.Orientacion orientacion)
     {
         if (orientacion == EstadoCarro.Orientacion.arriba || orientacion == EstadoCarro.Orientacion.abajo)
-            return true;
-        else
-            return false;
-    }
-    
-    private boolean EsBahiaHorizontal(EstadoCarro.Orientacion orientacion)
-    {
-        if (orientacion == EstadoCarro.Orientacion.izquierda || orientacion == EstadoCarro.Orientacion.derecha)
             return true;
         else
             return false;

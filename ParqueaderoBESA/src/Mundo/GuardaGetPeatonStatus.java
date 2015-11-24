@@ -6,17 +6,12 @@
 package Mundo;
 
 import BESA.ExceptionBESA;
-import BESA.Kernell.Agent.AgentBESA;
+import BESA.Kernell.Agent.*;
 import BESA.Kernell.Agent.Event.EventBESA;
-import BESA.Kernell.Agent.GuardBESA;
-import BESA.Kernell.Agent.StateBESA;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
 import BESA.Log.ReportBESA;
-import Carro.GuardaGetCarroStatusResult;
-import Data.DataGetPeatonStatus;
-import Data.DataGetPeatonStatusResult;
-import Data.DataIngresarPeaton;
-import Peaton.GuardaGetPeatonStatusResult;
+import Data.*;
+import Peaton.*;
 
 /**
  *

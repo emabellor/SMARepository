@@ -5,8 +5,6 @@
  */
 package Data;
 
-import BESA.Kernell.Agent.AgentBESA;
-import BESA.Kernell.Agent.Event.DataBESA;
 
 /**
  *

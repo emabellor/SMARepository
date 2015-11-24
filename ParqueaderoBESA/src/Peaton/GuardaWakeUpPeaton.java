@@ -12,13 +12,8 @@ import BESA.Kernell.Agent.GuardBESA;
 import BESA.Kernell.Agent.StateBESA;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
 import BESA.Log.ReportBESA;
-import Data.DataGetPeatonStatus;
-import Data.DataIngresarPeaton;
-import Data.DataUpdateCarroResult;
-import Data.DataUpdatePeatonResult;
-import Data.DataWakeUpPeaton;
-import Mundo.GuardaGetPeatonStatus;
-import Mundo.GuardaIngresarPeaton;
+import Data.*;
+import Mundo.*;
 
 /**
  *
@@ -61,7 +56,5 @@ public class GuardaWakeUpPeaton extends GuardBESA
         {
              ReportBESA.error(e);
         }
-        
-        
     }
 }

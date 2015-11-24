@@ -5,24 +5,13 @@
  */
 package Carro;
 
-import Mundo.GuardaGetCarroStatus;
+import Mundo.*;
 import BESA.ExceptionBESA;
-import BESA.Kernell.Agent.AgentBESA;
-import BESA.Kernell.Agent.Event.DataBESA;
-import BESA.Kernell.Agent.Event.EventBESA;
-import BESA.Kernell.Agent.GuardBESA;
-import BESA.Kernell.Agent.StateBESA;
+import BESA.Kernell.Agent.*;
+import BESA.Kernell.Agent.Event.*;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
-import BESA.Log.ReportBESA;
-import Data.DataGetCarroStatus;
-import Data.DataUpdateCarro;
-import Data.DataUpdateCarroResult;
-import Data.TipoElemento;
-import Logging.ClassLogger;
-import Logging.LogLevel;
-import java.awt.Point;
-import java.util.Random;
-
+import Data.*;
+import Logging.*;
 /**
  *
  * @author Mauricio
@@ -51,7 +40,7 @@ public class GuardaUpdateCarroResult extends GuardBESA
         }
 
         //Vuelve a solicitar status
-        ThreadSleep(estado.actualizacionMs);
+        ClassLogger.ThreadSleep(estado.actualizacionMs);
         DataGetCarroStatus getStatus = new DataGetCarroStatus();
         getStatus.sender = agente.getAlias();
         EventBESA event = new EventBESA(GuardaGetCarroStatus.class.getName(), getStatus);
@@ -64,20 +53,6 @@ public class GuardaUpdateCarroResult extends GuardBESA
         {
             ClassLogger.LogMsg(ex.getMessage(), LogLevel.ERROR);
         }
-    }
-    
-        
-    private void ThreadSleep (int timeoutMS)
-    {
-        try
-        {
-            Thread.sleep(timeoutMS);
-        }
-        catch (InterruptedException ex)
-        {
-            ClassLogger.LogMsg(ex.getMessage(), LogLevel.ERROR);
-        }
-        
     }
 }
 
