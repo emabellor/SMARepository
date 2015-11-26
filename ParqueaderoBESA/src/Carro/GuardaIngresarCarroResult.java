@@ -14,6 +14,7 @@ import BESA.Kernell.System.Directory.AgHandlerBESA;
 import Data.DataGetCarroStatus;
 import Data.DataIngresarCarro;
 import Data.DataIngresarCarroResult;
+import Data.DataSolicitarReserva;
 import Data.DataUpdateCarro;
 import Data.DataUpdateCarroResult;
 import Logging.ClassLogger;
@@ -21,6 +22,8 @@ import Logging.LogLevel;
 import Mundo.GuardaGetCarroStatus;
 import Mundo.GuardaIngresarCarro;
 import Mundo.GuardaUpdateCarro;
+import Reservas.GuardaSolicitarReserva;
+import java.awt.Point;
 
 /**
  *
@@ -63,6 +66,19 @@ public class GuardaIngresarCarroResult extends GuardBESA
             try
             {
                 AgHandlerBESA ah = agent.getAdmLocal().getHandlerByAlias("WORLD");
+                ah.sendEvent(event);
+            }
+            catch(ExceptionBESA ex)
+            {
+                ClassLogger.LogMsg(ex.getMessage(), LogLevel.ERROR);
+            }
+            
+            //Creando ejemplo dummy para la prueba del A*
+            DataSolicitarReserva dataReserva = new DataSolicitarReserva(agente.getAlias(), new Point(0,0));
+            event = new EventBESA(GuardaSolicitarReserva.class.getName(), dataReserva);
+            try
+            {
+                AgHandlerBESA ah = agente.getAdmLocal().getHandlerByAlias("Reservas");
                 ah.sendEvent(event);
             }
             catch(ExceptionBESA ex)

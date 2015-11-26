@@ -6,19 +6,15 @@
 package Carro;
 
 import BESA.ExceptionBESA;
-import BESA.Kernell.Agent.AgentBESA;
-import BESA.Kernell.Agent.Event.DataBESA;
-import BESA.Kernell.Agent.Event.EventBESA;
+import BESA.Kernell.Agent.*;
+import BESA.Kernell.Agent.Event.*;
 import BESA.Kernell.Agent.KernellAgentExceptionBESA;
-import BESA.Kernell.Agent.StateBESA;
-import BESA.Kernell.Agent.StructBESA;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
-import BESA.Log.ReportBESA;
-import Data.DataIngresarCarro;
-import Logging.ClassLogger;
-import Logging.LogLevel;
-import Mundo.GuardaIngresarCarro;
-import java.util.Random;
+import Data.*;
+import Logging.*;
+import Mundo.*;
+import Reservas.GuardaSolicitarReserva;
+import java.awt.*;
 
 /**
  *

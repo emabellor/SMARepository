@@ -14,7 +14,7 @@ import Logging.*;
  *
  * @author Mauricio
  */
-public class GuardaGetMundoStatusResult extends GuardBESA
+public class GuardaGetMundoStatusResultViewer extends GuardBESA
 {
     @Override
     public boolean funcEvalBool(StateBESA objEvalBool) 

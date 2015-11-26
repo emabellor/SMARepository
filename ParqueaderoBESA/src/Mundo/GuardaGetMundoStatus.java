@@ -11,6 +11,7 @@ import BESA.Kernell.Agent.Event.EventBESA;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
 import BESA.Log.ReportBESA;
 import Data.*;
+import Reservas.GuardaGetMundoStatusResultReservas;
 import Viewer.*;
 
 
@@ -30,15 +31,15 @@ public class GuardaGetMundoStatus extends GuardBESA
     public void funcExecGuard(EventBESA ebesa) 
     {
         EstadoPiso estado = (EstadoPiso)this.getAgent().getState();
-        
         DataGetMundoStatus dataReceived = (DataGetMundoStatus)ebesa.getData();
+        DataGetMundoStatusResult dataToSend = new DataGetMundoStatusResult(estado.GetElementos(), estado.GetAgentes(), dataReceived.referenciaAgente, dataReceived.referenciaPunto);
         
-        DataGetMundoStatusResult dataToSend = new DataGetMundoStatusResult();
-        dataToSend.listaElementos = estado.GetElementos();
-        dataToSend.listaAgentes = estado.GetAgentes();
+        EventBESA event;
+        if (dataReceived.senderClass == AgenteViewer.class)
+            event = new EventBESA(GuardaGetMundoStatusResultViewer.class.getName(), dataToSend);
+        else
+            event = new EventBESA(GuardaGetMundoStatusResultReservas.class.getName(), dataToSend);
         
-        
-        EventBESA event = new EventBESA(GuardaGetMundoStatusResult.class.getName(), dataToSend);
         try
         {
             AgHandlerBESA ah = agent.getAdmLocal().getHandlerByAlias(dataReceived.sender);
@@ -47,6 +48,6 @@ public class GuardaGetMundoStatus extends GuardBESA
         catch (ExceptionBESA e)
         {
              ReportBESA.error(e);
-        }
+        } 
     }
 }

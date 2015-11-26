@@ -10,9 +10,9 @@ import BESA.Kernell.Agent.*;
 import BESA.Kernell.Agent.Event.EventBESA;
 import BESA.Kernell.System.Directory.AgHandlerBESA;
 import Data.*;
-import Logging.ClassLogger;
-import Logging.LogLevel;
+import Logging.*;
 import Mundo.*;
+import java.awt.*;
 
 /**
  *
@@ -47,8 +47,7 @@ public class AgenteViewer extends AgentBESA
             mundoActual += "_" + estado.pisoActual;
        
         
-        DataGetMundoStatus dataToSend = new DataGetMundoStatus();
-        dataToSend.sender = this.getAlias();        
+        DataGetMundoStatus dataToSend = new DataGetMundoStatus(this.getAlias(), this.getClass(), "", new Point (0,0));
         EventBESA event = new EventBESA(GuardaGetMundoStatus.class.getName(), dataToSend);
         try
         {

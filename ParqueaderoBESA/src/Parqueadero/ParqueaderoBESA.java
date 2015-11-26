@@ -21,6 +21,7 @@ import Mundo.PisoB.*;
 import Mundo.PisoC.*;
 import GUI.*;
 import Data.*;
+import Reservas.*;
 import Viewer.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -212,9 +213,19 @@ public class ParqueaderoBESA
         String nombreBehavior = "BehaviorsViewer";
         structViewer.addBehavior(nombreBehavior);
         structViewer.bindGuard(nombreBehavior, GuardaChangeMundoReference.class);
-        structViewer.bindGuard(nombreBehavior, GuardaGetMundoStatusResult.class);
+        structViewer.bindGuard(nombreBehavior, GuardaGetMundoStatusResultViewer.class);
         AgenteViewer agenteViewer = new AgenteViewer("Viewer", estadoViewer, structViewer, 0.91);
         agenteViewer.start();
         
+        
+        ClassLogger.LogMsg("Creando Agente de reservas");
+        EstadoReservas estadoReservas = new EstadoReservas(MAP_SIZE);
+        StructBESA structReservas = new StructBESA();
+        nombreBehavior = "BehaviorsReservas";
+        structReservas.addBehavior(nombreBehavior);
+        structReservas.bindGuard(nombreBehavior, GuardaSolicitarReserva.class);
+        structReservas.bindGuard(nombreBehavior, GuardaGetMundoStatusResultReservas.class);
+        AgenteReservas agenteReservas = new AgenteReservas("Reservas", estadoReservas, structReservas, 0.91);
+        agenteReservas.start();
     }
 }
