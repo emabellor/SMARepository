@@ -71,15 +71,16 @@ public class GuardaGetMundoStatusResultReservas extends GuardBESA
         Point puntoInicial = new Point(11, 0);
         Point puntoFinal = new Point(11, 11);
 
+        ClassLogger.LogMsg("Problema: ("+puntoInicial.x+","+puntoInicial.y+") -> ("+puntoFinal.x+","+puntoFinal.y+")");
         ClassTreeSearch treeSearch = new ClassTreeSearch();
         ArrayList ruta = treeSearch.Enrutar(puntoInicial.x, puntoInicial.y, puntoFinal.x, puntoFinal.y, roomMap, true);
         ArrayList solucion = treeSearch.getSolucion(); 
-        DataView(1, ruta, solucion);
+        DataView(ruta, solucion);
     }
     
-    private void DataView(int Ag, ArrayList Ruta, ArrayList Solucion)
+    private void DataView(ArrayList Ruta, ArrayList Solucion)
     {
-        ClassLogger.LogMsg("\nSolución "+ Ag + ": ");
+        ClassLogger.LogMsg("\nSolución: ");
         for(int id=0; id < Ruta.size(); id++)
         {
             ClassLogger.LogMsg(Ruta.get(id) + " ");

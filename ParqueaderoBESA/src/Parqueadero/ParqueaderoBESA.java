@@ -38,7 +38,7 @@ public class ParqueaderoBESA
     private static int GAME_PERIODIC_TIME = 1000;
     private static int GAME_PERIODIC_DELAY_TIME = 100;
     private static int MAP_SIZE = 15;
-    private static int NUMERO_PISOS = 3;
+    private static int NUMERO_PISOS = 5;
     private static MainFrame mainFrame;
     private static AdmBESA adminBESA;
     
@@ -131,10 +131,10 @@ public class ParqueaderoBESA
             EstadoPiso estadoPiso;
             if (i == 1)
                 estadoPiso = new EstadoPisoA(MAP_SIZE);
-            else if (i == 2)
-                estadoPiso = new EstadoPisoB(MAP_SIZE);
-            else 
+            else if (i == NUMERO_PISOS)
                 estadoPiso = new EstadoPisoC(MAP_SIZE);
+            else 
+                estadoPiso = new EstadoPisoB(MAP_SIZE);
             
             estadoPiso.tiempoAparicionCarroMs = periodoAparicionCarroMs;
             StructBESA structPisoA = new StructBESA();
